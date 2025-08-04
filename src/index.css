@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+body {
+  background-color: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding-top: 100px; 
+}
+
+
+.glass-navbar {
+  position: fixed; 
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  background: rgba(22, 22, 22, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    top: -100px;
+    opacity: 0;
+  }
+  to {
+    top: 1rem;
+    opacity: 1;
+  }
+}
+
+.glass-navbar .navbar-brand {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.6rem; 
+  font-weight: 400; 
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5); 
+}
+
+.glass-navbar .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.2rem; 
+}
+
+.glass-navbar .nav-link {
+  color: #d1d1d1;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.glass-navbar .nav-link:hover {
+  color: #ffffff;
+}
+
+
+.glass-navbar .nav-link.active {
+  color: #ffffff;
+}
+
+.glass-navbar .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ff6347;
+  border-radius: 2px;
+  animation: growUnderline 0.3s ease;
+}
+
+@keyframes growUnderline {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.glass-navbar .favorites-badge {
+  background-color: #ff6347;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  animation: badgePop 0.3s ease-out;
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0.5); opacity: 0; }
+  80% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem; 
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+
+.recipe-detail-img {
+  max-height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.info-text, .loading {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #6c757d;
+}
+
+
+.recipe-detail-header {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  margin-bottom: -150px; 
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.recipe-detail-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+}
+
+.recipe-header-content {
+  position: relative; /* To appear above the overlay */
+  z-index: 2;
+  animation: fadeIn 1s ease-out;
+}
+
+.recipe-category {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.recipe-header-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.recipe-detail-body {
+  position: relative;
+  z-index: 3;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.recipe-actions .btn {
+  flex-grow: 1;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #ff6347;
+  display: inline-block;
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.ingredient-tag {
+  background: #f8f9fa;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.ingredient-tag .measure {
+  font-weight: 600;
+  color: #6c757d;
+}
+
+.instructions p {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app-background {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/homepage-bg.png');
+  background-size: cover;
+  background-position: center center;
+  filter: blur(3px);
+  transform: scale(1.05); 
+}
+
+.page-title {
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
